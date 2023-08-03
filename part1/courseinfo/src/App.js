@@ -5,26 +5,8 @@ const Header = (headerArgs) => {
   )
 }
 
-/*
-
-const course = 'Half Stack application development'
-const part1 = 'Fundamentals of React'
-const exercises1 = 10
-const part2 = 'Using props to pass data'
-const exercises2 = 7
-const part3 = 'State of a component'
-const exercises3 = 14
-
-const contents = [
-  { part: part1, exercise:exercises1 },
-  { part: part2, exercise:exercises2 },
-  { part: part3, exercise:exercises3 }
-]
-*/
-
 const Part = (partArgs) => {
   return(
-    // <p>{partArgs.contents.part} {partArgs.contents.exercise}</p>
     <p>{partArgs.part} {partArgs.exercise}</p>
   )
 }
@@ -32,7 +14,6 @@ const Part = (partArgs) => {
 const Content = (contentArgs) => {
 
   // Better way:
-
   return(
     <div>
       <Part part={contentArgs.part0} excercise={contentArgs.excercises0} />
@@ -40,24 +21,6 @@ const Content = (contentArgs) => {
       <Part part={contentArgs.part2} excercise={contentArgs.excercises2}/>
     </div>
   )
-
-
-  /* Better way (but still pretty terrible):
-  return(
-    <>
-      <p>
-        {contents[0].part} {contents[0].exercise}
-      </p>
-      <p>
-          {contents[1].part} {contents[1].exercise}
-      </p>
-      <p>
-          {contents[2].part} {contents[2].exercise}
-      </p>
-    </>
-    
-  )
-  */
 }
 
 const Total = (totalArgs) => {
@@ -69,44 +32,30 @@ const Total = (totalArgs) => {
 const App = () => {
 
   const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const part1 = {
+    name: 'Fundamentals of React',
+    excercise: 10 
+  }
+  const part2 = {
+    name: 'Using props to pass data',
+    excercise: 7
+  }
+  const part3 = {
+    name: 'State of a component',
+    excercise: 14
+  } 
 
-  const total = exercises1 + exercises2 + exercises3
+const total = part1.excercise + part2.excercise + part3.excercise 
 
-// Better way:
 return (
   <div>
     <Header course={course} />
-    <Content part0={part1} part1={part2} part2={part3} excercises0={exercises1}
-    excercises1={exercises2} excercises2={exercises3}/>
+    <Content part0={part1.name} part1={part2.name} part2={part3.name} excercises0={part1.exercises}
+    excercises1={part2.exercises} excercises2={part3.exercises}/>
     <Total total={total} />
   </div>
 )
 
-  /*
-  One way:
-
-  return (
-    <div>
-      <h1>{course}</h1>
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
-    </div>
-  )¨
-  */
 }
 
 export default App;
